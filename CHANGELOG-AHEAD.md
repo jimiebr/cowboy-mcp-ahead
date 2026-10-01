@@ -2,7 +2,7 @@
 
 ## 0.2.0 — 2026-10-01
 
-Estado: fontes preparadas; publicação e CI em andamento. Não instalado como fork no site.
+Estado: fontes publicadas e testes automatizados aprovados. Não instalado como fork no site.
 
 - Fork baseado no Cowboy MCP 1.6.9, commit 9670cd63c1f0f7e0640e24cbbe4701635efaaa30.
 - Incorporadas as duas correções da versão local 0.1.0: temporários de mídia e listagem recursiva.
@@ -20,4 +20,15 @@ Correções locais aplicadas ao Cowboy MCP 1.6.9 instalado: upload de mídia e l
 
 ### Histórico de publicação da 0.2.0
 
-Fork criado no GitHub. A primeira tentativa de gravação foi recusada com HTTP 403 (Resource not accessible by integration). O usuário instalou e autorizou o ChatGPT Codex Connector somente para este repositório; a criação de árvore Git foi então confirmada. git diff --check passou. Lint e regressões PHP aguardam o resultado de CI. A instalação do fork no site não foi realizada.
+Fork criado no GitHub. A primeira tentativa de gravação foi recusada com HTTP 403 (Resource not accessible by integration). O usuário instalou e autorizou o ChatGPT Codex Connector somente para este repositório; a publicação foi então confirmada no commit 24cb999494fae4ced115f23e2f68533b2be649ec. git diff --check passou. A instalação do fork no site não foi realizada.
+
+### Validação automatizada da 0.2.0
+
+[Execução GitHub Actions](https://github.com/jimiebr/cowboy-mcp-ahead/actions/runs/36913173497): aprovada em PHP 8.0 e PHP 8.3.
+
+- Lint de todos os arquivos PHP aprovado.
+- Upload base64 e URL chega ao sideload sem wp_tempnam e sem carregar includes administrativos.
+- Base64 inválido retorna erro explícito.
+- Listagem simples ignora entradas ponto; listagem recursiva retorna arquivo aninhado sem erro SplFileInfo.
+- Tentativa de escapar do diretório continua rejeitada.
+- Testes isolados usam funções WordPress simuladas e transporte HTTP simulado. Não substituem validação integral em WordPress nem teste de download externo real.
