@@ -16,7 +16,10 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
+          extensions: zip
       - name: PHP syntax
         run: find . -name '*.php' -not -path './node_modules/*' -print0 | xargs -0 -n1 php -l
       - name: Regression tests
         run: php tests/regression.php
+      - name: HTTPS ZIP installer tests
+        run: php tests/installer-url.php

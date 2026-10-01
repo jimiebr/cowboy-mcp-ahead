@@ -3,7 +3,7 @@
   "name": "io.github.jimiebr/cowboy-mcp-ahead",
   "title": "Cowboy Ahead",
   "description": "Independent Cowboy MCP fork with media and recursive file fixes, upstream tracking and versioned release notes.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "websiteUrl": "https://github.com/jimiebr/cowboy-mcp-ahead",
   "repository": {
     "url": "https://github.com/jimiebr/cowboy-mcp-ahead",

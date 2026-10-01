@@ -14,6 +14,7 @@ class Cowboy_MCP_Installer {
 
 	/** Tools handled by this class (self-journaled; bypassed in Rollback::begin). */
 	const TOOLS = [
+		'wp_install_plugin_from_url',
 		'wp_install_plugin', 'wp_update_plugin', 'wp_delete_plugin',
 		'wp_install_theme', 'wp_update_theme', 'wp_delete_theme',
 	];
@@ -272,7 +273,7 @@ class Cowboy_MCP_Installer {
 	/** Self-protection: never let the agent touch cowboy-mcp itself. */
 	public static function is_self( string $slug_or_file ): bool {
 		$first = strstr( $slug_or_file, '/', true ) ?: $slug_or_file;
-		return strtolower( $first ) === 'cowboy-mcp';
+		return in_array( strtolower( $first ), [ 'cowboy-mcp', 'cowboy-mcp-ahead', strtolower( basename( rtrim( COWBOY_MCP_PATH, '/\\' ) ) ) ], true );
 	}
 
 	/* ── Journal + settings helpers ────────────────────────── */
@@ -305,6 +306,11 @@ class Cowboy_MCP_Installer {
 		} else {
 			wp_clean_themes_cache();
 		}
+	}
+
+	/** Reuse the installer journal for URL installs, preserving undo semantics. */
+	public static function journal_url_install( string $folder, string $name, string $version ): ?int {
+		return self::journal( 'wp_install_plugin_from_url', 'create', 'plugin', $folder, "Install {$name} {$version} from verified ZIP", null );
 	}
 
 	private static function root_dir( string $type ): string {
@@ -751,6 +757,11 @@ class Cowboy_MCP_Installer {
 	/* ── Dry-run plan (called from generate_dry_run_preview) ── */
 
 	public static function dry_run_plan( string $tool, array $args ): array {
+		if ( $tool === 'wp_install_plugin_from_url' ) {
+			$valid = Cowboy_MCP_URL_Installer::validate_input( (string) ( $args['url'] ?? '' ), (string) ( $args['sha256'] ?? '' ) );
+			if ( is_wp_error( $valid ) ) return [ 'error' => $valid->get_error_code(), 'message' => $valid->get_error_message() ];
+			return [ 'would_install' => 'Public HTTPS plugin ZIP with verified SHA-256', 'activate' => false, 'overwrite' => false, 'package_validation' => 'Deferred until execution; dry run does not download or inspect the ZIP.' ];
+		}
 		$type = str_contains( $tool, '_theme' ) ? 'theme' : 'plugin';
 		try {
 			if ( str_starts_with( $tool, 'wp_install_' ) ) {

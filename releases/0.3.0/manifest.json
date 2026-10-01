@@ -1,0 +1,24 @@
+{
+  "version": "0.3.0",
+  "date": "2026-10-01",
+  "state": "local, CI/deployment pending",
+  "upstream": "1.6.9",
+  "files": [
+    {
+      "path": "cowboy-mcp.php",
+      "sha256": "26e921e3156ea51e14ee5d364a5869f72a9948579f017350add26b79fcb63f35"
+    },
+    {
+      "path": "includes/class-mcp-installer.php",
+      "sha256": "4f3d41ef1d0b4c8fc4b3c777043fdf43265c668aabf2c3e029877eb32383044a"
+    },
+    {
+      "path": "includes/class-mcp-url-installer.php",
+      "sha256": "b727d86486ba0529b0115dbc4cb98acfdff6eea765dd420d0090b5ee130e7345"
+    },
+    {
+      "path": "includes/tools/core/plugins.php",
+      "sha256": "6f83b04682fa81d2d077910c4b765c75ffcfd194e07ec414f45c46f2f4b77218"
+    }
+  ]
+}

@@ -2,7 +2,11 @@
 
 Fork independente de [Cowboy MCP](https://github.com/februality/cowboy-mcp), mantido por jimiebr. Correções rápidas, melhorias próprias e acompanhamento do upstream.
 
-Versão: **0.2.0**, baseada no Cowboy MCP **1.6.9**, commit `9670cd63c1f0f7e0640e24cbbe4701635efaaa30`. Licença GPL-2.0-or-later; créditos e licença originais preservados.
+Versão: **0.3.0**, baseada no Cowboy MCP **1.6.9**, commit `9670cd63c1f0f7e0640e24cbbe4701635efaaa30`. Licença GPL-2.0-or-later; créditos e licença originais preservados.
+
+### Instalar ZIP público pelo MCP
+
+Use `wp_install_plugin_from_url` com `url`, `sha256` (hash esperado do ZIP) e `confirm: true`. URLs públicas HTTPS de assets de releases GitHub são suportadas; não envie tokens na URL. O ZIP precisa conter uma pasta de plugin e um arquivo PHP principal com cabeçalho `Plugin Name`. A ferramenta instala **inativo**, sem sobrescrever plugins existentes; ative depois com `wp_activate_plugin` se desejado. `dry_run: true` valida os argumentos e mostra o plano, sem baixar ou validar o conteúdo do ZIP. Não funciona com repositórios privados, nem substitui o próprio Cowboy Ahead. Limites: 20 MiB compactado, 100 MiB descompactado, 2000 entradas.
 
 ## Alterações próprias
 

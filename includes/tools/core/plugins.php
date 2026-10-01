@@ -3,6 +3,10 @@ defined( 'ABSPATH' ) || exit;
 
 return [
     'tools' => [
+        Cowboy_MCP_Tools::tool( 'wp_install_plugin_from_url', '[Plugins] Install an installable plugin ZIP from a public HTTPS URL (including GitHub release assets). Requires expected SHA-256. Never overwrites existing plugins or activates code; use wp_activate_plugin separately. Limits: 20 MiB download, 100 MiB expanded, 2000 entries. Rejects unsafe paths, symlinks and incompatible PHP/WordPress requirements. Does not authenticate to private repositories.', [
+            'url' => [ 'type' => 'string', 'description' => 'Public HTTPS URL of an installable plugin ZIP, not a repository page', 'required' => true ],
+            'sha256' => [ 'type' => 'string', 'description' => 'Expected SHA-256 digest of ZIP: 64 hexadecimal characters', 'required' => true ],
+        ], [ 'readOnlyHint' => false, 'destructiveHint' => true, 'idempotentHint' => false, 'openWorldHint' => true ] ),
         Cowboy_MCP_Tools::tool( 'wp_list_plugins', '[Plugins] List installed plugins with activation status, version, metadata, and available updates.', [
             'status'          => [ 'type' => 'string', 'description' => 'Filter by status: active, inactive, or all (default "all")', 'default' => 'all', 'enum' => [ 'active', 'inactive', 'all' ] ],
         ], [
@@ -63,6 +67,9 @@ return [
     ],
 
     'handlers' => [
+        'wp_install_plugin_from_url' => function ( array $a ): array|WP_Error {
+            return Cowboy_MCP_URL_Installer::install( (string) ( $a['url'] ?? '' ), (string) ( $a['sha256'] ?? '' ) );
+        },
 
         'wp_list_plugins' => function ( array $a ): array {
             $all_plugins    = Cowboy_MCP_Compat::get_plugins();

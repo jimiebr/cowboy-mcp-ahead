@@ -1,5 +1,18 @@
 # Notas do Cowboy Ahead
 
+## Em preparação — 0.3.0
+
+Estado: implementação local; publicação, CI e instalação ainda pendentes.
+
+- Motivo: o instalador WordPress.org não aceita ZIPs públicos do GitHub.
+- Nova ferramenta `wp_install_plugin_from_url`, com URL HTTPS pública, SHA-256 obrigatório e `confirm: true` no modo seguro; instalação inativa, sem substituição de plugins existentes.
+- Download limitado a 20 MiB, extração a 100 MiB e 2000 entradas. Destinos dos redirecionamentos revalidados, TLS verificado, staging temporário fora de uploads, paths perigosos/links especiais rejeitados, cabeçalho/requisitos/sintaxe PHP verificados.
+- Histórico de desfazer reutiliza o instalador existente. Autoproteção inclui Ahead e upstream.
+- Arquivos de execução: cowboy-mcp.php, includes/class-mcp-installer.php, includes/class-mcp-url-installer.php, includes/tools/core/plugins.php. Testes: tests/installer-url.php e workflow validate.yml.
+- Limites: somente downloads públicos sem credenciais; não atualiza ZIPs já instalados; não ativa automaticamente; ZIP deve ter uma única pasta e um cabeçalho principal. Sintaxe/requisitos não garantem funcionamento do código de terceiros.
+- Recuperação: fontes anteriores em outputs/cowboy-ahead/migration-0.3.0/before/ no workspace; restaurar primeiro bootstrap anterior, depois demais fontes, mantendo endpoint e opções. Não desinstalar o plugin nem restaurar banco para simples reversão de código.
+- Nenhuma alteração editorial prevista. A falha conhecida de PNG corrompido permanece pendente.
+
 ## 0.2.0 — 2026-10-01
 
 Estado: fontes publicadas e testes automatizados aprovados. Instalação no site confirmada em 2026-10-01; ver [DEPLOYMENTS.md](DEPLOYMENTS.md) para validação real e limitações.
