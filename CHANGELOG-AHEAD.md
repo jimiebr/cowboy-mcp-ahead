@@ -2,7 +2,7 @@
 
 ## 0.2.0 — 2026-10-01
 
-Estado: fontes publicadas e testes automatizados aprovados. Não instalado como fork no site.
+Estado: fontes publicadas e testes automatizados aprovados. Instalação no site confirmada em 2026-10-01; ver [DEPLOYMENTS.md](DEPLOYMENTS.md) para validação real e limitações.
 
 - Fork baseado no Cowboy MCP 1.6.9, commit 9670cd63c1f0f7e0640e24cbbe4701635efaaa30.
 - Incorporadas as duas correções da versão local 0.1.0: temporários de mídia e listagem recursiva.

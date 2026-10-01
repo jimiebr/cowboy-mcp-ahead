@@ -25,6 +25,7 @@ Consulte [MAINTENANCE.md](MAINTENANCE.md). Nunca sincronize substituindo nossas 
 
 - [Notas das versões](CHANGELOG-AHEAD.md)
 - [Manifesto 0.2.0](releases/0.2.0/manifest.json)
+- [Instalações e testes no WordPress](DEPLOYMENTS.md)
 - [Documentação original preservada](README-UPSTREAM.md)
 
 A documentação original descreve capacidades do upstream; nem todas foram testadas neste fork. Nunca inclua credenciais em commits, issues ou logs.
