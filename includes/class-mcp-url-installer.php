@@ -114,13 +114,37 @@ class Cowboy_MCP_URL_Installer {
                     catch ( ParseError $e ) { return new WP_Error( 'package_php_invalid', 'A PHP file in the package failed syntax validation. Nothing was installed.' ); }
                 }
             }
-            if ( file_exists( $dest ) || is_link( $dest ) || ! @rename( $source, $dest ) ) return new WP_Error( 'package_move_failed', 'Could not move package into a new plugin directory.' );
+            $moved = self::move_validated_package( $source, $dest, $root );
+            if ( is_wp_error( $moved ) ) return $moved;
             Cowboy_MCP_Compat::flush_plugins_cache();
             wp_cache_delete( 'plugins', 'plugins' );
             $change_id = Cowboy_MCP_Installer::journal_url_install( $folder, $data['Name'], $data['Version'] );
             return [ 'installed' => true, 'activated' => false, 'plugin_file' => $folder . '/' . $main, 'name' => $data['Name'], 'version' => $data['Version'], 'sha256' => strtolower( $sha256 ), 'change_id' => $change_id ];
         } finally {
             Cowboy_MCP_Installer::delete_dir( $work );
+        }
+    }
+
+    /** Cross-volume staging: copy validated files, then rename on the destination volume. */
+    private static function move_validated_package( string $source, string $dest, string $root ): bool|WP_Error {
+        $pending = $root . '/.cowboy-ahead-install-' . wp_generate_uuid4();
+        if ( ! mkdir( $pending, 0700 ) ) return new WP_Error( 'package_move_failed', 'Could not create destination staging directory.' );
+        try {
+            $iterator = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $source, FilesystemIterator::SKIP_DOTS ), RecursiveIteratorIterator::SELF_FIRST );
+            foreach ( $iterator as $file ) {
+                $relative = substr( $file->getPathname(), strlen( $source ) + 1 );
+                $target = $pending . '/' . $relative;
+                if ( $file->isDir() ) {
+                    if ( ! mkdir( $target, 0755 ) ) return new WP_Error( 'package_move_failed', 'Could not copy plugin directory.' );
+                } elseif ( ! copy( $file->getPathname(), $target ) || ! chmod( $target, 0644 ) ) {
+                    return new WP_Error( 'package_move_failed', 'Could not copy validated plugin files.' );
+                }
+            }
+            if ( file_exists( $dest ) || is_link( $dest ) ) return new WP_Error( 'already_installed', 'Plugin directory already exists. Nothing was overwritten.' );
+            if ( ! chmod( $pending, 0755 ) || ! @rename( $pending, $dest ) ) return new WP_Error( 'package_move_failed', 'Could not finish installation on the plugins volume.' );
+            return true;
+        } finally {
+            Cowboy_MCP_Installer::delete_dir( $pending );
         }
     }
 }
