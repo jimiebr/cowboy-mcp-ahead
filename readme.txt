@@ -1,11 +1,11 @@
-=== Cowboy MCP - Free MCP Server with Undo for Claude & ChatGPT ===
-Contributors: februality
+=== Cowboy Ahead — Independent Cowboy MCP Fork ===
+Contributors: jimiebr, februality
 Donate link: https://cowboymcp.com/tip
 Tags: mcp, ai-agent, model-context-protocol, claude, claude-code
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.6.9
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 

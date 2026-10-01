@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "date": "2026-10-01",
+  "upstream": {
+    "repository": "februality/cowboy-mcp",
+    "version": "1.6.9",
+    "commit": "9670cd63c1f0f7e0640e24cbbe4701635efaaa30"
+  },
+  "deployment": "not-deployed-as-fork",
+  "files": [
+    {
+      "path": "cowboy-mcp.php",
+      "sha256": "2f05780c544cdacb6dfa250655d87cae67d1862f9997fe95e31b97013e4b1043"
+    },
+    {
+      "path": "includes/tools/core/media.php",
+      "sha256": "9b70ec654cda0ee08adaa0c0db6e90199c1531af9b49c8703b61a5c72ba4ad97"
+    },
+    {
+      "path": "includes/tools/core/files.php",
+      "sha256": "3c32520ef6877ea60346d313edc4795e7a43ab06ec5ac67d611e1737cd52af17"
+    }
+  ],
+  "publication": "write-access-confirmed; CI-pending",
+  "validation": {
+    "php_lint": "not-run: no-local-php-runtime",
+    "regression": "not-run: pending-CI",
+    "git_diff_check": "passed",
+    "live_fix_tests": "see CHANGELOG-AHEAD.md; not a full fork deployment test"
+  }
+}

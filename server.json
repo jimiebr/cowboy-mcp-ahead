@@ -1,12 +1,12 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.februality/cowboy-mcp",
-  "title": "Cowboy MCP",
-  "description": "Free WordPress MCP server with undo: 184 built-in tools plus WordPress Abilities API bridge, for Claude, ChatGPT, Cursor & Claude Code. Self-hosted, no relay, no Pro tier.",
-  "version": "1.6.9",
-  "websiteUrl": "https://cowboymcp.com",
+  "name": "io.github.jimiebr/cowboy-mcp-ahead",
+  "title": "Cowboy Ahead",
+  "description": "Independent Cowboy MCP fork with media and recursive file fixes, upstream tracking and versioned release notes.",
+  "version": "0.2.0",
+  "websiteUrl": "https://github.com/jimiebr/cowboy-mcp-ahead",
   "repository": {
-    "url": "https://github.com/februality/cowboy-mcp",
+    "url": "https://github.com/jimiebr/cowboy-mcp-ahead",
     "source": "github"
   },
   "remotes": [
@@ -15,7 +15,7 @@
       "url": "https://{site_host}/wp-json/cowboy-mcp/v1/endpoint",
       "variables": {
         "site_host": {
-          "description": "Your WordPress site domain, e.g. example.com (install the plugin from wordpress.org/plugins/cowboy-mcp first)",
+          "description": "Your WordPress domain with Cowboy Ahead installed; do not activate alongside Cowboy MCP.",
           "isRequired": true
         }
       },

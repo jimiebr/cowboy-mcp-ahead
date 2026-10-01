@@ -256,7 +256,7 @@ return [
 
             $count = 0;
             foreach ( $iterator as $item ) {
-                if ( $item->isDot() ) continue;
+                if ( ! $recursive && $item->isDot() ) continue;
                 if ( Cowboy_MCP_Security::is_protected_storage_path( $item->getPathname() ) ) {
                     continue;
                 }
