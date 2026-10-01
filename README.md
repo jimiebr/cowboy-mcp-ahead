@@ -2,7 +2,7 @@
 
 Fork independente de [Cowboy MCP](https://github.com/februality/cowboy-mcp), mantido por jimiebr. Correções rápidas, melhorias próprias e acompanhamento do upstream.
 
-Versão: **0.3.0**, baseada no Cowboy MCP **1.6.9**, commit `9670cd63c1f0f7e0640e24cbbe4701635efaaa30`. Licença GPL-2.0-or-later; créditos e licença originais preservados.
+Versão: **0.3.1**, baseada no Cowboy MCP **1.6.9**, commit `9670cd63c1f0f7e0640e24cbbe4701635efaaa30`. Licença GPL-2.0-or-later; créditos e licença originais preservados.
 
 ### Instalar ZIP público pelo MCP
 
@@ -19,7 +19,7 @@ Use `wp_install_plugin_from_url` com `url`, `sha256` (hash esperado do ZIP) e `c
 
 O pacote deve conter a pasta cowboy-mcp-ahead/ com cowboy-mcp.php na raiz. Faça backup de arquivos e banco antes da troca. **Não ative junto com Cowboy MCP**: as classes e constantes internas são compartilhadas. Desative o original antes de ativar o Ahead. Não desinstale o original durante a migração: sua rotina de remoção pode apagar dados compartilhados.
 
-Mantemos endpoint /wp-json/cowboy-mcp/v1/endpoint, opções, autenticação e tabelas para compatibilidade. A migração completa do site ainda não foi executada. As duas correções foram validadas no plugin original instalado; isso não prova a instalação completa do fork.
+Mantemos endpoint /wp-json/cowboy-mcp/v1/endpoint, opções, autenticação e tabelas para compatibilidade. Migração realizada em 2026-10-01; a versão 0.3.1 está instalada e validada nos testes registrados em [DEPLOYMENTS.md](DEPLOYMENTS.md).
 
 ## Atualizações do upstream
 
@@ -29,6 +29,7 @@ Consulte [MAINTENANCE.md](MAINTENANCE.md). Nunca sincronize substituindo nossas 
 
 - [Notas das versões](CHANGELOG-AHEAD.md)
 - [Manifesto 0.2.0](releases/0.2.0/manifest.json)
+- [Manifesto 0.3.1](releases/0.3.1/manifest.json)
 - [Instalações e testes no WordPress](DEPLOYMENTS.md)
 - [Documentação original preservada](README-UPSTREAM.md)
 

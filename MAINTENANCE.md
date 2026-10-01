@@ -13,7 +13,7 @@
 4. Fazer merge da versão escolhida sem reset --hard ou force push.
 5. Revisar conflitos e mudanças sem conflitos que afetem mídia, arquivos, autenticação e permissões. Se upstream corrigir o mesmo problema, avaliar remover nosso ajuste redundante.
 6. Preservar identidade Ahead, Update URI, compatibilidade e GPL.
-7. Executar lint PHP e php tests/regression.php. Validar em WordPress de teste upload URL/base64, imagem destacada, listagem e autenticação. Não executar exclusões reais de conteúdo do usuário.
+7. Executar lint PHP, php tests/regression.php e php tests/installer-url.php. Validar em WordPress de teste upload URL/base64, imagem destacada, listagem, autenticação e instalação de ZIP inerte inativo. Não executar exclusões reais de conteúdo do usuário.
 8. Atualizar notas, versão e manifesto com hashes e testes realmente realizados.
 9. Publicar pacote e somente então planejar a atualização do site.
 

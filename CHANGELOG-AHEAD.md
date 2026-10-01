@@ -1,8 +1,19 @@
 # Notas do Cowboy Ahead
 
-## Em preparação — 0.3.0
+## 0.3.1 — 2026-10-01
 
-Estado: implementação local; publicação, CI e instalação ainda pendentes.
+Estado: implantado e validado pelo MCP em vinil-eu-org-joneswasmer.wasmer.app.
+
+- Corrigido rename entre volumes na Wasmer: copia os arquivos já validados e conclui com rename no volume de plugins, limpando staging em sucesso/falha.
+- Instalado ZIP público de asset GitHub com SHA-256 conferido: Ahead Installer Probe inativo, alteração 18. Repetição bloqueada por pasta existente. Também confirmados pelo MCP: confirmação obrigatória, rejeição de URL privada e hashes malformado/incorreto, dry run sem instalação.
+- CI em PHP 8.0/8.3: lint, 7 regressões e 23 verificações do instalador com ZIPs reais e WordPress/HTTP simulados, [execução aprovada](https://github.com/jimiebr/cowboy-mcp-ahead/actions/runs/36918889865). Mudança final da versão no bootstrap verificada pela escrita PHP do MCP.
+- Ahead 0.3.1 ativo, upstream preservado inativo; catálogo 132 ferramentas; diagnóstico 13 pass/0 fail/1 warn (novos clientes fechados), HTTP inicial 200. Duas falhas de transporte precederam download bem-sucedido; não há retry automático. Não testadas todas as ferramentas.
+- Snapshot anterior 0.2.0, intermediário 0.3.0, aplicado e SHA-256 no workspace: outputs/cowboy-ahead/migration-0.3.0/. Checkpoint 2, escritas 10–15. Recuperação: restaurar bootstrap anterior primeiro, depois instalador/tools; classe nova deixa de ser carregada. Não desinstalar nem restaurar banco apenas para reverter código.
+- Fixture mantida inativa; nenhuma mudança editorial. Repositórios privados, atualização de plugins existentes por ZIP e autoativação não suportados. A melhoria de mídia corrompida continua pendente.
+
+## 0.3.0 — 2026-10-01
+
+Estado: pré-lançamento publicado e aplicado; CI passou, mas a instalação real falhou no rename entre volumes. Substituído por 0.3.1; tag e pacote preservados.
 
 - Motivo: o instalador WordPress.org não aceita ZIPs públicos do GitHub.
 - Nova ferramenta `wp_install_plugin_from_url`, com URL HTTPS pública, SHA-256 obrigatório e `confirm: true` no modo seguro; instalação inativa, sem substituição de plugins existentes.

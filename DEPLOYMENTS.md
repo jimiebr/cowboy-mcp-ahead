@@ -1,5 +1,13 @@
 # Registro de instalações — Cowboy Ahead
 
+## 0.3.1 — 2026-10-01
+
+Instalação por ZIP HTTPS adicionada pelo próprio wordpress_admin MCP. Checkpoint 2; fontes 0.2.0 preservadas antes de gravar quatro arquivos (alterações 10–13). O teste real 0.3.0 falhou no rename entre volumes; a correção 0.3.1 foi gravada em duas fontes (alterações 14–15), mantendo autenticação e plugin ativo.
+
+Validação: 23 verificações do novo instalador + 7 regressões/lint aprovados em PHP 8.0 e 8.3 ([CI](https://github.com/jimiebr/cowboy-mcp-ahead/actions/runs/36918889865)). Pelo MCP, hash incorreto bloqueado; download público de https://github.com/jimiebr/cowboy-mcp-ahead/releases/download/v0.3.0/ahead-installer-probe-0.3.0.zip com SHA-256 d4f023afeeec1b960e63a48248b9af0869cf13dddb79306a3001c844a1a0e2d9 instalado inativo, alteração 18. Nova instalação da mesma pasta bloqueada. Fixture mantida inativa, sem mudanças editoriais. Site HTTP 200, catálogo 132 ferramentas, diagnóstico 13 pass/0 fail/1 warn por cadastro de novos clientes fechado. Duas falhas de download precederam o sucesso; sem retry automático. Não foram testadas todas as ferramentas.
+
+Snapshots anteriores/intermediários/aplicados e SHA-256 no workspace: outputs/cowboy-ahead/migration-0.3.0/. Recuperação de código: restaurar before/cowboy-mcp.php primeiro, depois before/includes/class-mcp-installer.php e before/includes/tools/core/plugins.php. Isso deixa a classe nova sem carregamento. Não desinstalar nem restaurar banco apenas para reverter código; a fixture fica inativa e pode ser gerida separadamente pelo administrador. Catálogo pode levar alguns segundos para refletir as novas fontes.
+
 ## 0.2.0 — 2026-10-01
 
 Estado: instalado, ativo e validado no WordPress vinil.eu.org, hospedado em vinil-eu-org-joneswasmer.wasmer.app.

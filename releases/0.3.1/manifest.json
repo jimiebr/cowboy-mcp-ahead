@@ -1,0 +1,24 @@
+{
+  "version": "0.3.1",
+  "date": "2026-10-01",
+  "state": "deployed and validated for the tests listed in CHANGELOG-AHEAD.md",
+  "upstream": "1.6.9",
+  "files": [
+    {
+      "path": "cowboy-mcp.php",
+      "sha256": "b862b1e477027b55f9d96d8deacfe3f96715f9bb4a01eff500598f329f9e6411"
+    },
+    {
+      "path": "includes/class-mcp-installer.php",
+      "sha256": "4f3d41ef1d0b4c8fc4b3c777043fdf43265c668aabf2c3e029877eb32383044a"
+    },
+    {
+      "path": "includes/class-mcp-url-installer.php",
+      "sha256": "ece5f40f0bc550fd197cb3aeeb091a121171aae7da74e72db6de3b35f5f63290"
+    },
+    {
+      "path": "includes/tools/core/plugins.php",
+      "sha256": "6f83b04682fa81d2d077910c4b765c75ffcfd194e07ec414f45c46f2f4b77218"
+    }
+  ]
+}

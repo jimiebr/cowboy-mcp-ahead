@@ -3,7 +3,7 @@
  * Plugin Name: Cowboy Ahead
  * Plugin URI:  https://github.com/jimiebr/cowboy-mcp-ahead
  * Description: Turns your WordPress site into a Model Context Protocol (MCP) server so AI agents like Claude, ChatGPT, Cursor and Claude Code can read, edit, and manage everything on the site - with per-change undo and database checkpoints.
- * Version:     0.3.0
+ * Version:     0.3.1
  * Author:      jimiebr; original por februality
  * Author URI:  https://github.com/jimiebr
  * Update URI: https://github.com/jimiebr/cowboy-mcp-ahead
@@ -42,7 +42,7 @@ along with Cowboy MCP. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'COWBOY_MCP_VERSION', '0.3.0' );
+define( 'COWBOY_MCP_VERSION', '0.3.1' );
 define( 'COWBOY_AHEAD_UPSTREAM_VERSION', '1.6.9' );
 define( 'COWBOY_MCP_PATH',    plugin_dir_path( __FILE__ ) );
 define( 'COWBOY_MCP_URL',     plugin_dir_url( __FILE__ ) );
